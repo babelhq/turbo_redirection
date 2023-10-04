@@ -11,14 +11,6 @@ from the server. It does so by responding with a Turbo Stream that will perform 
 It will clear the cache for the frame if the request is a POST, PUT, PATCH, or DELETE,
 which is similar to how a normal Turbo Drive Form submission works.
 
-## RecedeOnWeb
-
-Changes behavior of `recede_or_redirect_to ..` to respond
-with a Turbo Stream that clears the cache and navigates back using history.
-
-Normally, this would only happen on native, but we want to emulate a native-ish
-feeling on the web.
-
 ## RedirectWithoutTurbo
 
 Adds support for redirecting *and breaking out of Turbo* in response to a
