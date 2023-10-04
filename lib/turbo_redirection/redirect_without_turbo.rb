@@ -20,7 +20,7 @@ module TurboRedirection::RedirectWithoutTurbo
     if request.format.turbo_stream? && response_options.delete(:turbo) == false
       location = url_for(options)
 
-      render "turbo/streams/redirect_without_turbo", locals: { location: location }
+      render "turbo_redirection/redirect_without_turbo", locals: { location: location }
     else
       super
     end

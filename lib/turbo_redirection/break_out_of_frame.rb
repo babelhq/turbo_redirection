@@ -34,7 +34,7 @@ module TurboRedirection::BreakOutOfFrame
     if request.format.turbo_stream? && turbo_frame
       turbo_clear_cache = request.post? || request.put? || request.patch? || request.delete?
 
-      render  "turbo/streams/redirect",
+      render  "turbo_redirection/redirect",
               location: location,
               status: :created,
               locals: {

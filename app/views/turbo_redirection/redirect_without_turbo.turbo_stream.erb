@@ -1,0 +1,6 @@
+<%= turbo_stream.append_all "head" do %>
+  <%= javascript_tag nonce: true, data: { turbo_temporary: true } do %>
+    document.location.href = "<%= location %>"
+    document.currentScript.remove()
+  <% end %>
+<% end %>

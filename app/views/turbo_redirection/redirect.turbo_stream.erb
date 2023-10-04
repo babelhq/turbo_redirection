@@ -1,0 +1,17 @@
+<%= turbo_stream.append_all "head" do %>
+  <%= javascript_tag nonce: true, data: { turbo_temporary: true } do %>
+    <% if turbo_clear_cache %>
+      Turbo.cache.clear()
+    <% end %>
+
+    Turbo.visit('<%= escape_javascript location %>', {
+      <% if turbo_frame %>
+        frame: "<%= turbo_frame %>",
+      <% end %>
+      <% if turbo_action %>
+        action: "<%= turbo_action %>",
+      <% end %>
+    })
+    document.currentScript.remove()
+  <% end %>
+<% end %>
