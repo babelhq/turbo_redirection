@@ -20,7 +20,7 @@ module TurboRedirection::RecedeOnWeb
 
   def turbo_native_action_or_redirect(url, action, redirect_type, options = {})
     if !turbo_native_app? && request.format.turbo_stream? && action == :recede
-      render "turbo/streams/#{action}"
+      render "turbo_redirection/#{action}"
     else
       super
     end
