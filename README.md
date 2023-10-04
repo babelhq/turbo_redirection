@@ -1,28 +1,51 @@
 # TurboRedirection
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/turbo_redirection`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem contains some reusable modules for Turbo Redirection extracted from our main app. See the detailed description and usage examples in respective modules.
 
-TODO: Delete this and the text above, and describe your gem
+The modules are:
+
+## BreakOutOfFrame
+
+Adds support for breaking out of a Turbo Frame (or targeting a specific frame)
+from the server. It does so by responding with a Turbo Stream that will perform the visit.
+It will clear the cache for the frame if the request is a POST, PUT, PATCH, or DELETE,
+which is similar to how a normal Turbo Drive Form submission works.
+
+## RecedeOnWeb
+
+Changes behavior of `recede_or_redirect_to ..` to respond
+with a Turbo Stream that clears the cache and navigates back using history.
+
+Normally, this would only happen on native, but we want to emulate a native-ish
+feeling on the web.
+
+## RedirectWithoutTurbo
+
+Adds support for redirecting *and breaking out of Turbo* in response to a
+Turbo Streams request. This is useful when you want to redirect to a page that does not
+live on the same domain as our app and thus would fail to load in via Turbo.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'turbo_redirection'
+gem "turbo_redirection"
 ```
 
 And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install turbo_redirection
-
 ## Usage
 
-TODO: Write usage instructions here
+Include the module in your controller:
+
+```ruby
+class MyController < ApplicationController
+  include TurboRedirection
+end
+```
 
 ## Development
 
@@ -32,4 +55,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/turbo_redirection.
+Bug reports and pull requests are welcome on GitHub at https://github.com/babelhq/turbo_redirection.
