@@ -1,6 +1,4 @@
 module TurboRedirection::RedirectWithoutTurbo
-  extend ActiveSupport::Concern
-
   # This module adds support for redirecting *and breaking out of Turbo* in response to a
   # Turbo Streams request. This is useful when you want to redirect to a page that does not
   # live on the same domain as our app and thus would fail to load in via Turbo.

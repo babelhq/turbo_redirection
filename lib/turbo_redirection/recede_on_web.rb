@@ -1,6 +1,4 @@
 module TurboRedirection::RecedeOnWeb
-  extend ActiveSupport::Concern
-
   # This module changes behavior of `recede_or_redirect_to ..` to respond
   # with a Turbo Stream that clears the cache and navigates back using history.
   #
